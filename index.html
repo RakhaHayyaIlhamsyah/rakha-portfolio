@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakha Hayya | Cybersecurity Enthusiast | Network Engineer</title>
+    <style>
+        /* CSS / Styling */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --btn-bg: #2563eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Foto Profil Medium */
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            object-fit: cover;
+            margin: 0 auto 20px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Teks Identitas Utama di Container */
+        .main-title {
+            text-align: center;
+            font-size: 3em;
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: var(--accent-hover);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        
+        .student-text {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        /* Tombol Sosial Media di Container */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .social-btn {
+            background-color: var(--btn-bg);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Bagian Konten & Kartu */
+        .section {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            opacity: 0; 
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            color: var(--accent-hover);
+            text-align: center;
+        }
+
+        /* Tag Keahlian */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+            margin-bottom: 40px;
+        }
+
+        .skill-tag {
+            background-color: #334155;
+            color: var(--text-main);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            font-weight: bold;
+            border: 1px solid #475569;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            border-color: var(--accent-hover);
+        }
+
+        /* Sertifikat NASA & Koran */
+        .cert-container {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .cert-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid var(--accent);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transform: rotate(0deg); 
+            transition: transform 0.3s ease;
+        }
+
+        .cert-img:hover {
+            transform: scale(1.02) rotate(0deg); 
+        }
+
+        .program-text {
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 30px; 
+            font-weight: bold;
+        }
+
+        /* Grid Thumbnail Sertifikat (Diperbarui) */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .cert-thumb-card {
+            background-color: #0f172a;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cert-thumb-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .cert-thumb-wrapper {
+            width: 100%;
+            height: 130px;
+            overflow: hidden;
+            background-color: #1e293b;
+        }
+
+        .cert-thumb-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.3s;
+        }
+
+        .cert-thumb-card:hover .cert-thumb-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .cert-thumb-title {
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: bold;
+            color: var(--text-main);
+            background-color: #1e293b;
+            border-top: 1px solid #334155;
+        }
+
+        /* Grid Artikel Berita */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .article-card {
+            background-color: #27354f;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .article-card a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .article-card a:hover {
+            color: var(--accent-hover);
+        }
+
+        .article-source {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            align-self: flex-start;
+        }
+
+        /* Form Kontak */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background-color: #0f172a;
+            color: white;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #0b1120;
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+        /* Responsif */
+        @media (max-width: 600px) {
+            .main-title { font-size: 2em; }
+            .section { padding: 20px; }
+            .profile-pic { width: 100px; height: 100px; }
+        }
+
+        /* CMS content */
+        .cms-empty { text-align:center; color:var(--text-muted); padding:20px; }
+        .featured-wrap { text-align:center; }
+        .featured-wrap img { max-width:100%; height:auto; border-radius:8px; border:3px solid var(--accent); box-shadow:0 8px 20px rgba(0,0,0,.4); }
+        .featured-caption { color:var(--text-muted); font-weight:bold; margin:8px 0 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <img src="https://github.com/RakhaHayyaIlhamsyah/sertif1/blob/ec9eee9b95c4f1ae46f474db108000a92119309d/tes.jpeg?raw=true" alt="Foto Rakha Hayya" class="profile-pic">
+        <h1 class="main-title">Rakha Hayya</h1>
+        <p class="subtitle">Cybersecurity Researcher | Bug Bounty Hunter | Network Engineer</p>
+        <p class="student-text">Student At SMK TARUNA BHAKTI DEPOK</p>        
+        
+        <div class="social-links">
+            <a href="https://github.com/RakhaHayyaIlhamsyah" target="_blank" class="social-btn">GitHub</a>
+            <a href="mailto:rakrah12h@gmail.com" class="social-btn">Email</a>
+            <a href="https://www.instagram.com/rakha.hayya?igsh=MTA3eXlzMDFyYjh4OA==" target="_blank" class="social-btn">Instagram</a>
+            <a href="https://www.linkedin.com/in/rakha-hayya-ilhamsyah-840252378?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-btn">Linkedin</a>
+        </div>
+
+        <div class="section fade-in">
+            <h2>Skills</h2>
+            
+            <div class="skills-container">
+                <span class="skill-tag">Bug Bounty</span>
+                <span class="skill-tag">Web Penetration Testing</span>
+                <span class="skill-tag">Menguasai OS Linux, Windows dan Mac</span>
+                <span class="skill-tag">Instalasi CCTV</span>
+                <span class="skill-tag">Revitalisasi Jaringan</span>
+                <span class="skill-tag">Routing & Switching</span>
+                <span class="skill-tag">AWS Cloud</span>
+                <span class="skill-tag">Splicing</span>
+                <span class="skill-tag">Monitoring Server</span>
+            </div>
+
+
+            <div class="cert-container">
+                <div id="featured-cert"></div>
+            </div>
+
+            <h3 style="color: var(--text-main); margin-top: 40px; text-align: center; border-bottom: 1px solid #334155; padding-bottom: 10px;">Sertifikasi & Pengakuan Lainnya</h3>
+            <div id="cert-grid" class="cert-grid"></div>
+        </div>
+
+        <div class="section fade-in">
+            <h2 style="text-align: center;">Liputan Media & Berita</h2>
+            <div id="articles-grid" class="articles-grid"></div>
+
+            <div class="cert-container" style="margin-top: 50px;">
+                <h3 style="color: var(--text-main); border-bottom: 1px solid #334155; padding-bottom: 10px; display: inline-block;">Liputan Cetak Radar Depok</h3><br>
+                <img class="cert-img" src="https://raw.githubusercontent.com/RakhaHayyaIlhamsyah/gambar/main/koran%20rakha%20(1).jpeg" alt="Koran Cetak Radar Depok Liputan NASA" style="margin-top: 15px;">
+            </div>
+        </div>
+        <div class="section fade-in">
+            <h2 style="text-align: center;">Hubungi Saya</h2>
+            
+            <form class="contact-form" action="https://formspree.io/f/xojyqekw" method="POST">
+                <input type="text" name="name" placeholder="Nama Anda" required>
+                <input type="email" name="email" placeholder="Email Anda" required>
+                <textarea name="message" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                <button type="submit" class="submit-btn">Kirim Pesan</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rakha Hayya Ilhamsyah. All Rights Reserved.</p>
+    </footer>
+
+    <audio id="bg-music" loop>
+        <source src="chill.mp3" type="audio/mpeg">
+    </audio>
+    
+    <button id="music-btn" onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; background: var(--bg-color); color: var(--accent); border: 1px solid var(--accent); padding: 10px 15px; border-radius: 5px; cursor: pointer; font-family: monospace; z-index: 1000; transition: background 0.3s, color 0.3s;">
+        ▶ Play Music
+    </button>
+
+    <script>
+
+        // --- Portfolio CMS loader ---
+        async function loadPortfolioContent() {
+            try {
+                const [certRes, newsRes] = await Promise.all([
+                    fetch('/content/certificates.json', {cache:'no-store'}),
+                    fetch('/content/news.json', {cache:'no-store'})
+                ]);
+                if (!certRes.ok || !newsRes.ok) throw new Error('Content JSON gagal dimuat');
+                const certificates = await certRes.json();
+                const news = await newsRes.json();
+
+                const featured = certificates.filter(x => x.featured);
+                const grid = certificates.filter(x => !x.featured);
+                const featuredEl = document.getElementById('featured-cert');
+                featuredEl.innerHTML = featured.length
+                    ? featured.map(x => `<div class="featured-wrap"><a href="${escapeAttr(x.url || x.image)}" target="_blank" rel="noopener"><img class="cert-img" src="${escapeAttr(x.image)}" alt="${escapeAttr(x.title)}"></a><p class="featured-caption">✨ ${escapeHtml(x.title)} ✨</p></div>`).join('')
+                    : '';
+
+                const certGrid = document.getElementById('cert-grid');
+                certGrid.innerHTML = grid.length ? grid.map(x =>
+                    `<a href="${escapeAttr(x.url || x.image)}" target="_blank" rel="noopener" class="cert-thumb-card">
+                        <div class="cert-thumb-wrapper"><img src="${escapeAttr(x.image)}" alt="${escapeAttr(x.title)}" loading="lazy"></div>
+                        <div class="cert-thumb-title">${escapeHtml(x.title)}</div>
+                    </a>`).join('') : '<div class="cms-empty">Belum ada sertifikat.</div>';
+
+                const newsGrid = document.getElementById('articles-grid');
+                newsGrid.innerHTML = news.length ? news.map(x =>
+                    `<div class="article-card">
+                        <a href="${escapeAttr(x.url)}" target="_blank" rel="noopener">${escapeHtml(x.title)}</a>
+                        <span class="article-source">${escapeHtml(x.source || 'Media')}</span>
+                    </div>`).join('') : '<div class="cms-empty">Belum ada liputan media.</div>';
+            } catch (e) {
+                console.error(e);
+                document.getElementById('cert-grid').innerHTML = '<div class="cms-empty">Konten belum dapat dimuat.</div>';
+                document.getElementById('articles-grid').innerHTML = '<div class="cms-empty">Konten belum dapat dimuat.</div>';
+            }
+        }
+        function escapeHtml(s='') {
+            return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+        }
+        function escapeAttr(s='') { return escapeHtml(s); }
+        loadPortfolioContent();
+
+        // --- Intersecton Observer (Animasi Fade In) ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.fade-in');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // --- Music Player Logic ---
+        var myAudio = document.getElementById("bg-music");
+        var isPlaying = false;
+        
+        function toggleMusic() {
+            if (isPlaying) {
+                myAudio.pause();
+                document.getElementById("music-btn").innerHTML = "▶ Play Music";
+                document.getElementById("music-btn").style.background = "var(--bg-color)";
+                document.getElementById("music-btn").style.color = "var(--accent)";
+            } else {
+                myAudio.play();
+                document.getElementById("music-btn").innerHTML = "⏸ Pause Music";
+                document.getElementById("music-btn").style.background = "var(--accent)";
+                document.getElementById("music-btn").style.color = "white";
+            }
+            isPlaying = !isPlaying;
+        }
+    </script>
+</body>
+</html>
